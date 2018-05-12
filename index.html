@@ -10,6 +10,11 @@
 
         console.log("wasmLoaded")
 
+        if (!Module._free) {
+            console.error("Module._free is missing! (will use dummy to avoid crash)");
+            Module._free = function() {};
+        }
+
         let previewCanvasContext
 
         const createCanvas = (id, index, width, height) => {
